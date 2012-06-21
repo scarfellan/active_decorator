@@ -38,6 +38,7 @@ module ActiveDecorator
 
       decorator_name = "#{model_class.name}Decorator"
       d = decorator_name.constantize
+      raise NameError unless d.name == decorator_name
       d.send :include, ActiveDecorator::Helpers
       @@decorators[model_class] = d
     rescue NameError
